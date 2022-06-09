@@ -22,10 +22,42 @@ html {
 
 body {
   background: var(--main-bg-color);
-  background-repeat: no-repeat;
+  /* height: 100vh; */
+  /* background-repeat: no-repeat; */
+  background-size: cover;
 }
 
 /* Header style */
+
+.usericon {
+  z-index: 2001;
+  display: flex;
+  justify-content: flex-end;
+  width: 100vw;
+  cursor: pointer;
+  transition: all 1s ease-in-out;
+}
+
+.usericon > span {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  padding: 0 1rem;
+  font-weight: 700;
+  color: var(--dark-text);
+  z-index: 2002;
+  transition: all 1s ease-in-out;
+}
+
+.usericon > i {
+  color: var(--dark-text);
+  transition: all 1s ease-in-out;
+}
+.usericon > i:hover {
+  color: var(--light-text);
+  transition: all 1s ease-in-out;
+}
 
 .header {
   display: flex;
@@ -34,8 +66,8 @@ body {
   margin-bottom: 20vh;
 }
 
-.header > img {
-  width: 6rem;
+.header > img .header > a {
+  width: 4rem;
   cursor: pointer;
 }
 
@@ -60,7 +92,10 @@ body {
   gap: 1rem;
 }
 
-.login > button {
+.login > button,
+login > a,
+.zaloguj,
+.zarejestruj {
   width: 7rem;
   height: 2rem;
   background: rgba(255, 255, 255, 0.2);
@@ -70,6 +105,9 @@ body {
   box-shadow: 1px 2px 16px -2px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(20px);
   cursor: pointer;
+  list-style: none;
+  text-align: center;
+  text-decoration: none;
 }
 
 /* End Of Header Style */
@@ -111,7 +149,7 @@ body {
   letter-spacing: 0.1rem;
 }
 
-.article1 > p {
+.opis {
   color: var(--dark-text);
   line-height: 1.6em;
   grid-column: 1;
@@ -297,7 +335,7 @@ body > .nav {
   justify-content: center;
   align-items: flex-end;
   /* border: solid 2px red; */
-  height: 90vh;
+  height: fit-content;
 }
 
 .nav {
@@ -387,43 +425,36 @@ a {
 
 /* End Of Nav */
 
-/* Form Style */
+/* Form Pages Style */
+
+.mainform {
+  background-color: var(--main-bg-color);
+  background: var(--main-bg-color);
+  height: 78vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .form_container,
 .form_container_reg {
+  /* display: none; */
   border: solid 2px rgba(255, 255, 255, 0.179);
-  position: fixed;
-  left: 50%;
+  /* position: fixed; */
+  /* left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); */
   padding: 2rem;
   padding-bottom: 0.5rem;
   z-index: 1004;
-  display: flex;
-  height: 60vh;
+  height: 40vh;
   width: 40vw;
   background-color: #09232e7a;
   backdrop-filter: blur(25px);
-  opacity: 0;
+  opacity: 100;
   justify-content: center;
   align-items: center;
   border-radius: 3rem;
-}
-
-.form_container_hidden {
-  border: solid 2px rgba(255, 255, 255, 0.179);
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  padding: 2rem;
-  padding-bottom: 0.5rem;
-  z-index: 1004;
-  display: flex;
-  height: 40vh;
-  background-color: #09232e7a;
-  backdrop-filter: blur(25px);
-  opacity: 100;
 }
 
 form {
@@ -476,4 +507,64 @@ form > input {
   color: var(--dark-text);
   transition: 1s ease all;
 }
-/* End Of Form Style */
+
+/* Article DB */
+
+.article {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: solid 2px red; */
+  margin: auto;
+  z-index: 2222;
+  height: max-content;
+  flex-direction: column;
+}
+
+.image,
+.tytul,
+.maintext {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 5vh;
+  background-color: var(--light-text);
+  color: var(--dark-text);
+}
+
+.tytul {
+  width: 20vw;
+  height: 5vh;
+}
+
+.maintext {
+  display: flex;
+  width: 60vw;
+  height: 50vh;
+  align-items: baseline;
+  justify-content: left;
+  text-align: left;
+}
+
+.upload {
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--dark-text);
+  border-radius: 1rem;
+  border: 0.1rem solid rgba(208, 208, 208, 0.48);
+  box-shadow: 1px 2px 16px -2px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(20px);
+  cursor: pointer;
+  list-style: none;
+  text-align: center;
+  text-decoration: none;
+  transition: 1s all ease;
+
+  padding: 0;
+}
+
+.upload:hover {
+  background-color: var(--light-text);
+  color: var(--dark-text);
+  transition: 1s all ease;
+}

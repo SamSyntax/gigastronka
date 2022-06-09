@@ -1,3 +1,13 @@
+<?php 
+session_start();
+
+	include("connection.php");
+	include("functions.php");
+
+	$user_data = check_login($con);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18,29 +28,7 @@
     <title>Giga Stronka</title>
   </head>
   <body>
-    <!-- Login/Join form -->
-    <div class="form_container" id="form_container">
-      <form method="GET">
-        <span>Zaloguj się</span><br />
-        <span>Nazwa użytkownika</span>
-        <input type="text" placeholder="Login" required />
-        <span>Hasło</span>
-        <input type="password" placeholder="Hasło" required />
-        <input type="submit" class="submit" placeholder="Zaloguj" />
-      </form>
-    </div>
 
-    <div class="form_container_reg" id="form_container_reg">
-      <form method="GET">
-        <span>Zarejestruj się</span><br />
-        <span>Nazwa użytkownika</span>
-        <input type="text" placeholder="Login" required />
-        <span>Hasło</span>
-        <input type="password" placeholder="Hasło" required />
-        <input type="submit" class="submit" placeholder="Zaloguj" />
-      </form>
-    </div>
-    <!-- End Of Form -->
 
     <!-- Nav -->
     <div class="nav-container">
@@ -50,7 +38,7 @@
             <a href="#header"><i class="fa-solid fa-user fa-2x"></i></a>
           </li>
           <li>
-            <a href="#header"><i class="fa-solid fa-user-pen fa-2x"></i></a>
+            <a href="index.php"><i class="fa-solid fa-user-pen fa-2x"></i></a>
           </li>
           <li>
             <a href="#footer"><i class="fa-solid fa-address-book fa-2x"></i></a>
@@ -69,10 +57,11 @@
       <p class="boldtag">GIGA</p>
       <p class="thintag">RYBA.PL</p>
 
-      <div class="login">
-        <a href="login.php"><button class="zaloguj" id="login">Zaloguj</button></a>
-        <a href="signup.php"><button class="zarejestruj" id="register">Dołącz</button></a>
-      </div>
+      <div class="usericon">
+          <a href="logout.php"><i class="fa-solid fa-user fa-2x"></i></a>
+          <?php echo "<span>" .$user_data['user_name']; "</span>"; ?>
+      </div>  
+
     </div>
     <!-- End of Header section -->
 

@@ -1,3 +1,8 @@
+<?php
+
+  include("connection.php");
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18,39 +23,17 @@
     <title>Giga Stronka</title>
   </head>
   <body>
-    <!-- Login/Join form -->
-    <div class="form_container" id="form_container">
-      <form method="GET">
-        <span>Zaloguj się</span><br />
-        <span>Nazwa użytkownika</span>
-        <input type="text" placeholder="Login" required />
-        <span>Hasło</span>
-        <input type="password" placeholder="Hasło" required />
-        <input type="submit" class="submit" placeholder="Zaloguj" />
-      </form>
-    </div>
 
-    <div class="form_container_reg" id="form_container_reg">
-      <form method="GET">
-        <span>Zarejestruj się</span><br />
-        <span>Nazwa użytkownika</span>
-        <input type="text" placeholder="Login" required />
-        <span>Hasło</span>
-        <input type="password" placeholder="Hasło" required />
-        <input type="submit" class="submit" placeholder="Zaloguj" />
-      </form>
-    </div>
-    <!-- End Of Form -->
 
     <!-- Nav -->
     <div class="nav-container">
       <div class="nav_hidden" id="navbar">
         <ul>
           <li>
-            <a href="#header"><i class="fa-solid fa-user fa-2x"></i></a>
+            <a href="login.php"><i class="fa-solid fa-user fa-2x"></i></a>
           </li>
           <li>
-            <a href="#header"><i class="fa-solid fa-user-pen fa-2x"></i></a>
+            <a href="signup.php"><i class="fa-solid fa-user-pen fa-2x"></i></a>
           </li>
           <li>
             <a href="#footer"><i class="fa-solid fa-address-book fa-2x"></i></a>
@@ -65,7 +48,7 @@
 
     <!-- Header section -->
     <div class="header" id="header">
-      <img src="assets\logo2.png" alt="logo" />
+      <a href="index.php"><img src="assets\logo2.png" alt="logo" /></a>
       <p class="boldtag">GIGA</p>
       <p class="thintag">RYBA.PL</p>
 

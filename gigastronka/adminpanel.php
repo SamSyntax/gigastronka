@@ -1,3 +1,39 @@
+<?php
+   session_start(); 
+
+
+
+   $con = mysqli_connect("localhost", "root", "");
+   $db = mysqli_select_db($con, 'login_sample_db');
+   
+
+  if(isset($_POST['upload']))
+  {
+      $file = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));
+      $title = $_POST['tytul'];
+      $content = $_POST['maintext'];
+
+      $query = "INSERT INTO `articles` (`image`, `title`, `content`) VALUES ('$file', '$title', '$content')";
+
+      $query_run = mysqli_query($con, $query);
+
+      if($query_run){
+          echo '<script type="text/javascript"> alert("Pomyślnie dodano artykuł")</script>';
+      }
+  }  
+
+
+//   article fetch
+
+  $article = "SELECT image, title, content FROM articles";
+
+  $article_result = mysqli_query($con, $article);
+
+  $article_fetch = mysqli_fetch_array($article_result);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18,29 +54,7 @@
     <title>Giga Stronka</title>
   </head>
   <body>
-    <!-- Login/Join form -->
-    <div class="form_container" id="form_container">
-      <form method="GET">
-        <span>Zaloguj się</span><br />
-        <span>Nazwa użytkownika</span>
-        <input type="text" placeholder="Login" required />
-        <span>Hasło</span>
-        <input type="password" placeholder="Hasło" required />
-        <input type="submit" class="submit" placeholder="Zaloguj" />
-      </form>
-    </div>
 
-    <div class="form_container_reg" id="form_container_reg">
-      <form method="GET">
-        <span>Zarejestruj się</span><br />
-        <span>Nazwa użytkownika</span>
-        <input type="text" placeholder="Login" required />
-        <span>Hasło</span>
-        <input type="password" placeholder="Hasło" required />
-        <input type="submit" class="submit" placeholder="Zaloguj" />
-      </form>
-    </div>
-    <!-- End Of Form -->
 
     <!-- Nav -->
     <div class="nav-container">
@@ -64,21 +78,43 @@
     <!-- End of Nav -->
 
     <!-- Header section -->
-    <div class="header" id="header">
-      <img src="assets\logo2.png" alt="logo" />
+     <div class="header" id="header">
+      <a href="index.php"><img src="assets\logo2.png" alt="logo" /></a>
       <p class="boldtag">GIGA</p>
       <p class="thintag">RYBA.PL</p>
 
-      <div class="login">
-        <a href="login.php"><button class="zaloguj" id="login">Zaloguj</button></a>
-        <a href="signup.php"><button class="zarejestruj" id="register">Dołącz</button></a>
-      </div>
+      <div class="usericon">
+          <a href="logout.php"><i class="fa-solid fa-user-crown"></i></a>
+      </div>  
+
     </div>
     <!-- End of Header section -->
 
+
+    <!-- Article Upload -->
+    <div class="article">
+        <h1> Opublikuj Artykuł </h1><br><br>
+
+        <form method="POST" enctype="multipart/form-data">
+
+            <label> Załaduj zdjęcie do wyświetlenia </label>
+            <input type="file" name="image" id="image" class="image"><br>
+            
+            <label> Tytuł </label>
+            <input type="text" name="tytul" id="tytul" class="tytul"><br>
+
+            <label> Tekst </label>
+            <input type="text" name="maintext" id="maintext" class="maintext"><br>
+
+            <input type="submit" name="upload" value="Opublikuj" class="upload"><br>
+
+        </form>
+    </div>
+    <!-- End Of Article Upload -->
+
     <!-- Content Section -->
     <div class="main">
-      <div class="article1">
+     <div class="article1">
         <h1 class="gigarybak">GIGA RYBAK PRZY GIGA ŁODZI</h1>
         <p class="opis">
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi ullam officia
